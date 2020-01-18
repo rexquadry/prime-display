@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prime Numbers Display</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        /* table.prime-table {width: 100%;}
+        table.prime-table tr {display: flex;justify-content: space-evenly;}
+        table.prime-table tr > * {flex-grow: 1;} */
+    </style>
+</head>
+<body>
+
+    <div class="content-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script id="display-template" type="text/x-handlebars-template">
+        <table class="prime-table table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col"></th>
+                    {{#each primes}}
+                    <th scope="col">{{number}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each primes2}}
+                <tr>
+                    <th scope="row">{{number}}</th>
+                    {{#each ../primes}}
+                    <td>{{mulpiplyPrimes ../this.number number}}</td>
+                    {{/each}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+    
+    <!--Your new content will be displayed in here-->
+    <script src="./index.js"></script>
+    <script>
+        $(function () {
+            const primes = generatePrimeNumbers(10);
+            // Grab the template script
+            var theTemplateScript = $("#display-template").html();
+
+            // Compile the template
+            var theTemplate = Handlebars.compile(theTemplateScript);
+
+            // Define our data object
+            var context = {
+                "primes": primes.map(item => {
+                    return {number: item};
+                }),
+                "primes2": primes.map(item => {
+                    return {number: item};
+                })
+            };
+            Handlebars.registerHelper('mulpiplyPrimes', function(i, j){
+                return i * j;
+            });
+
+            // Pass our data to the template
+            var theCompiledHtml = theTemplate(context);
+
+            // Add the compiled html to the page
+            $('.content-placeholder').html(theCompiledHtml);
+        });
+    </script>
+</body>
+</html>

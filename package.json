@@ -1,0 +1,19 @@
+{
+  "name": "prime-display",
+  "version": "1.0.0",
+  "description": "Application to display a table of product of prime numbers",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "origin https://github.com/rexquadry/prime-display.git"
+  },
+  "keywords": [
+    "prime",
+    "numbers"
+  ],
+  "author": "Rex_Quadry",
+  "license": "ISC"
+}

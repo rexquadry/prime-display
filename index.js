@@ -1,8 +1,10 @@
+const FIRST_PRIME = 2;
+
 const isPrime = (number) => {
     if(typeof number != "number")
         return false;
     try {
-        for (let i = 2; i < number; i++) {
+        for (let i = FIRST_PRIME; i < number; i++) {
             if(number % i === 0){
                 return false;
             }
@@ -14,7 +16,6 @@ const isPrime = (number) => {
 }
 
 const generatePrimeNumbers = (amount = 10, tryDefault = 50) => {
-    const FIRST_PRIME = 2;
     let arrRange = [];
     const primeNumbers = [];
     for (let i = FIRST_PRIME; i < parseInt(tryDefault); i++) {

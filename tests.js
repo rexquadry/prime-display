@@ -37,32 +37,33 @@ describe('Test isPrime function', function() {
 testGeneratePrimeNumbers = app.__get__('generatePrimeNumbers');
 describe('Testing prime number generator', function() {
     it('should be empty', function(done) {
-      const test = testGeneratePrimeNumbers(10, 1);
+      const test = testGeneratePrimeNumbers(0);
       test.length.should.equal(0);
       done();
     });
 
     it('should have length of 10', function(done) {
-        const test = testGeneratePrimeNumbers(10, 35);
+        const test = testGeneratePrimeNumbers(10);
+        console.log(test)
         test.length.should.equal(10);
         done();
     });
 
     it('should include 2', function(done) {
-        const test = testGeneratePrimeNumbers(10, 35);
+        const test = testGeneratePrimeNumbers(10);
         test.should.include(2);
         done();
     });
 
     it('should not include 9', function(done) {
-        const test = testGeneratePrimeNumbers(20,30);
+        const test = testGeneratePrimeNumbers(20);
         console.log(test);
         test.should.not.include(9);
         done();
     });
 
     it('should not include 9', function(done) {
-        const test = testGeneratePrimeNumbers(10, 35);
+        const test = testGeneratePrimeNumbers(10);
         test.should.not.include(9);
         done();
     });

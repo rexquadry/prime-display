@@ -15,15 +15,16 @@ const isPrime = (number) => {
     }
 }
 
-const generatePrimeNumbers = (amount = 10, tryDefault = 50) => {
+const generatePrimeNumbers = (amount = 10) => {
     let arrRange = [];
     const primeNumbers = [];
-    for (let i = FIRST_PRIME; i < parseInt(tryDefault); i++) {
+    for (let i = FIRST_PRIME; i > 0; i++) {
+
+        if(arrRange.length >= parseInt(amount))
+            break;
+            
         if(isPrime(i))
             arrRange.push(i);
-
-        if(arrRange.length === parseInt(amount))
-            break;
     }
     return arrRange;
 }
